@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Campeonato } from '../campeonato';
+import { CAMPEONATOS } from '../campeonatos';
 
 @Component({
   selector: 'app-contenido',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contenido.component.css']
 })
 export class ContenidoComponent implements OnInit {
+
+  campeonatos= CAMPEONATOS;
 
   constructor() { }
 
