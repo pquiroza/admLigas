@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Campeonato } from '../campeonato';
 import { CAMPEONATOS } from '../campeonatos';
 
 @Component({
