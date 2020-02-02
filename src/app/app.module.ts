@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -17,14 +17,13 @@ import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
 import { ContenidoPruebaComponent } from './contenido-prueba/contenido-prueba.component';
 import { InicioComponent } from './inicio/inicio.component';
 
+import { ConexionService } from './services/conexion.service';
+import { ListaCampeonatosComponent } from './lista-campeonatos/lista-campeonatos.component';
+import { AgregaCampeonatosComponent } from './agrega-campeonatos/agrega-campeonatos.component';
+
 firebase.initializeApp(environment.firebase);
 
-const rutas: Routes = [
-  {path: 'contenido', component: ContenidoComponent },
-  {path: 'contenido-prueba', component: ContenidoPruebaComponent },
-  {path: '', component: InicioComponent, pathMatch: 'full' },
-  {path: '**', redirectTo: '/', pathMatch: 'full' }
-];
+
 
 @NgModule({
   declarations: [
@@ -33,18 +32,20 @@ const rutas: Routes = [
     ContenidoComponent,
     PiePaginaComponent,
     ContenidoPruebaComponent,
-    InicioComponent
+    InicioComponent,
+    ListaCampeonatosComponent,
+    AgregaCampeonatosComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(rutas),
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ConexionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
