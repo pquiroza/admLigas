@@ -10,6 +10,7 @@ import { Campeonato } from './../campeonato';
 export class ListaCampeonatosComponent implements OnInit {
 
   campeonatos: any;
+  noticias: any;
 
   //campeonatoEditado: any;
 
@@ -31,16 +32,28 @@ export class ListaCampeonatosComponent implements OnInit {
   ngOnInit() {
   }
 
-  eliminar(item){
+  eliminar(campeonato){
     
-    this.conexion.eliminarCampeonato(item);
+    this.conexion.eliminarCampeonato(campeonato);
   }
 
-  editar(item){ 
-    console.log(item);
+  editar(campeonato){ 
+    //console.log(campeonato);
     
-    this.campeonatoEditado = item;
-    console.log(this.campeonatoEditado.nombre);
+    this.campeonatoEditado = campeonato;
+   
+   
+    console.log('--------------');
+
+    this.conexion.listaNoticias(campeonato).subscribe(item=>{
+      this.noticias= item;
+      console.log('noticias que trae', this.noticias);
+    })
+    this.conexion.listaNoticias(campeonato);
+    
+    console.log('--------------');
+
+    //console.log(this.campeonatoEditado.nombre);
   }
 
   agregarEditado(){

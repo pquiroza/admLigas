@@ -20,6 +20,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ConexionService } from './services/conexion.service';
 import { ListaCampeonatosComponent } from './lista-campeonatos/lista-campeonatos.component';
 import { AgregaCampeonatosComponent } from './agrega-campeonatos/agrega-campeonatos.component';
+import { NoticiasComponent } from './noticias/noticias.component';
 
 firebase.initializeApp(environment.firebase);
 
@@ -34,7 +35,8 @@ firebase.initializeApp(environment.firebase);
     ContenidoPruebaComponent,
     InicioComponent,
     ListaCampeonatosComponent,
-    AgregaCampeonatosComponent
+    AgregaCampeonatosComponent,
+    NoticiasComponent
   ],
   imports: [
     BrowserModule,
