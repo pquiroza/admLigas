@@ -10,13 +10,17 @@ import { Noticia } from './../noticia';
   providedIn: 'root'
 })
 export class ConexionService {
+
+
+
+
   private campeonatosCollection: AngularFirestoreCollection<Campeonato>;
   campeonatos: Observable<Campeonato[]>;
   private campeonatoDoc: AngularFirestoreDocument<Campeonato>;
   private noticiasCollection: AngularFirestoreCollection<Noticia>;
   noticias: Observable<Noticia[]>;
-  
-  constructor(private afs: AngularFirestore) { 
+
+  constructor(private afs: AngularFirestore) {
     this.campeonatosCollection = afs.collection<Campeonato>('Campeonatos');
     this.campeonatos = this.campeonatosCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -28,9 +32,10 @@ export class ConexionService {
   }
 
 
-listaNoticias(item)
+
+listaNoticias(idCampeonato : string)
 {
-  this.campeonatoDoc = this.afs.doc<Campeonato>(`Campeonatos/${item.id}`);
+  this.campeonatoDoc = this.afs.doc<Campeonato>(`Campeonatos/${idCampeonato}`);
 
   this.noticiasCollection = this.campeonatoDoc.collection('noticias');
   this.noticias = this.noticiasCollection.snapshotChanges().pipe(
@@ -40,30 +45,29 @@ listaNoticias(item)
       return { id, ...data };
     }))
   );
-  
+
   return this.noticias;
-  //this.noticiasCollection=this.afs.collection<Noticia>('Noticias');
 }
 
 listaCAmpeonatos(){
   return this.campeonatos;
 }
 
-agregarCampeonato(campeonato: Campeonato) {
-  alert("creando campeonato "+campeonato.nombre);
-  this.campeonatosCollection.add(campeonato);
+agregarCampeonato(itemCampeonato: Campeonato) {
+  alert("creando campeonato "+itemCampeonato.nombre);
+  this.campeonatosCollection.add(itemCampeonato);
 }
-eliminarCampeonato(item){
-  alert("chuata va a borrar "+ item.id);
-  this.campeonatoDoc = this.afs.doc<Campeonato>(`Campeonatos/${item.id}`);
+eliminarCampeonato(itemCampeonato){
+  alert("chuata va a borrar "+ itemCampeonato.id);
+  this.campeonatoDoc = this.afs.doc<Campeonato>(`Campeonatos/${itemCampeonato.id}`);
   this.campeonatoDoc.delete();
 
 }
 
-editarCampeonato(item){
-  alert("alerta va a editar "+ item.id);
-  this.campeonatoDoc = this.afs.doc<Campeonato>(`Campeonatos/${item.id}`);
-  this.campeonatoDoc.update(item);
+editarCampeonato(itemCampeonato){
+  alert("alerta va a editar "+ itemCampeonato.id);
+  this.campeonatoDoc = this.afs.doc<Campeonato>(`Campeonatos/${itemCampeonato.id}`);
+  this.campeonatoDoc.update(itemCampeonato);
 
 }
 

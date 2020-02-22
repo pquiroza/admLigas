@@ -17,10 +17,15 @@ import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
 import { ContenidoPruebaComponent } from './contenido-prueba/contenido-prueba.component';
 import { InicioComponent } from './inicio/inicio.component';
 
-import { ConexionService } from './services/conexion.service';
+
 import { ListaCampeonatosComponent } from './lista-campeonatos/lista-campeonatos.component';
 import { AgregaCampeonatosComponent } from './agrega-campeonatos/agrega-campeonatos.component';
 import { NoticiasComponent } from './noticias/noticias.component';
+import { LoginComponent } from './login/login.component';
+
+
+import { ConexionService } from './services/conexion.service';
+import { LoginService } from './services/login.service';
 
 firebase.initializeApp(environment.firebase);
 
@@ -36,7 +41,8 @@ firebase.initializeApp(environment.firebase);
     InicioComponent,
     ListaCampeonatosComponent,
     AgregaCampeonatosComponent,
-    NoticiasComponent
+    NoticiasComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +53,7 @@ firebase.initializeApp(environment.firebase);
     AngularFireStorageModule,
     AppRoutingModule
   ],
-  providers: [ConexionService],
+  providers: [ConexionService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

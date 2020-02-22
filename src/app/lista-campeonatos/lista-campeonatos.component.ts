@@ -9,12 +9,13 @@ import { Campeonato } from './../campeonato';
 })
 export class ListaCampeonatosComponent implements OnInit {
 
-  campeonatos: any;
-  noticias: any;
+  //campeonatos: any;
+  campeonatos: Campeonato[];
+  //noticias: any;
 
   //campeonatoEditado: any;
-
-  campeonatoEditado: any = {
+//campeonatoEditado: any = {
+  campeonatoEditado: Campeonato = {
     id: 0,
     nombre: '',
     direccion: '',
@@ -33,25 +34,15 @@ export class ListaCampeonatosComponent implements OnInit {
   }
 
   eliminar(campeonato){
-    
+
     this.conexion.eliminarCampeonato(campeonato);
   }
 
-  editar(campeonato){ 
+  editar(campeonato){
     //console.log(campeonato);
-    
-    this.campeonatoEditado = campeonato;
-   
-   
-    console.log('--------------');
 
-    this.conexion.listaNoticias(campeonato).subscribe(item=>{
-      this.noticias= item;
-      console.log('noticias que trae', this.noticias);
-    })
-    this.conexion.listaNoticias(campeonato);
-    
-    console.log('--------------');
+    this.campeonatoEditado = campeonato;
+
 
     //console.log(this.campeonatoEditado.nombre);
   }
