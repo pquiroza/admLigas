@@ -6,6 +6,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { AngularFireDatabaseModule } from "@angular/fire/database";
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +28,7 @@ import { LoginComponent } from './login/login.component';
 
 import { ConexionService } from './services/conexion.service';
 import { LoginService } from './services/login.service';
+import { NoticiaComponent } from './noticia/noticia.component';
 
 firebase.initializeApp(environment.firebase);
 
@@ -42,7 +45,8 @@ firebase.initializeApp(environment.firebase);
     ListaCampeonatosComponent,
     AgregaCampeonatosComponent,
     NoticiasComponent,
-    LoginComponent
+    LoginComponent,
+    NoticiaComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,9 @@ firebase.initializeApp(environment.firebase);
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireDatabaseModule,
+    ReactiveFormsModule
   ],
   providers: [ConexionService, LoginService],
   bootstrap: [AppComponent]

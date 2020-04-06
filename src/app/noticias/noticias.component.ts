@@ -15,20 +15,25 @@ export class NoticiasComponent implements OnInit {
 
   //constructor(private conexion: ConexionService, private campeonato: Campeonato) {
 constructor(private conexion: ConexionService, private sesion: LoginService) {
-    console.log('--------------');
-    console.log('datos de sesion: ', sesion.usuarioLogueado);
+    //console.log('--------------');
+    //console.log('datos de sesion: ', sesion.usuarioLogueado);
 
     this.conexion.listaNoticias(sesion.usuarioLogueado.campeonato).subscribe(item=>{
       this.noticias= item;
-      console.log('noticias que trae', this.noticias);
+      //console.log('noticias que trae', this.noticias);
     })
     //this.conexion.listaNoticias(campeonato);
 
-    console.log('--------------');
+    //console.log('--------------');
 
   }
 
   ngOnInit() {
+  }
+
+  eliminarNoticia(noticia) {
+    
+    this.conexion.eliminarNoticia(this.sesion.usuarioLogueado.campeonato, noticia);
   }
 
 }

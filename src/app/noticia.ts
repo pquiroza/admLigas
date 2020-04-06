@@ -3,5 +3,6 @@ export class Noticia {
     titulo: string;
     descripcion: string;
     fecha: string;
-    foto: string;
+    imageUrl: string;
+    idStorage: string;
 }
