@@ -1,5 +1,5 @@
 export class Campeonato {
-    id: number;
+    id: string;
     nombre: string;
     direccion: string;
     fechaInicio: string;
