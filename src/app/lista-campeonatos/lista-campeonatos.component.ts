@@ -1,8 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ConexionService } from '../services/conexion.service';
 import { Campeonato } from './../campeonato';
-import { LoginService } from '../services/login.service';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ListaCampeonatosComponent implements OnInit {
 
-  @Output() public actualizarPadre = new EventEmitter();
+  //@Output() public actualizarPadre = new EventEmitter();
   //@ViewChild('campeonatoModal') modal: ElementRef;
   campeonatos: Campeonato[];
   campeonatoEditado: Campeonato = {
@@ -22,16 +20,17 @@ export class ListaCampeonatosComponent implements OnInit {
     fechaInicio: ''
   }
   
-
-  constructor(private conexion: ConexionService, private sesion: LoginService, private router: Router) {
-    
+  constructor(private conexion: ConexionService) {
+    //console.log("CREO EL LISTA CAMPEONATOS");
     conexion.listaCAmpeonatos().subscribe(item => {
       this.campeonatos = item;
-      //console.log(this.campeonatos);
-    })
+      //console.log("Cargo Campeonatos en Campeonatos ***",this.campeonatos);
+    });
+    
   }
 
   ngOnInit() { 
+    
   }
 
   eliminar(campeonato) {
@@ -46,14 +45,6 @@ export class ListaCampeonatosComponent implements OnInit {
     this.conexion.editarCampeonato(this.campeonatoEditado);
   }
 
-  seleccionar(campeonato) {
-    //this.sesion.setCampeonatoLogueado(campeonato);
-    console.log('poniendo en sesion el campeonato: ', campeonato.id);
-    sessionStorage.setItem('idCampeonato', campeonato.id);
-    console.log('la ruta es ', this.router.url);
-    //this.router.navigateByUrl('noticias'); 
-    this.actualizarPadre.emit();
-   // modal.modal('hide');
-  }
+  
 
 }

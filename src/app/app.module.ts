@@ -8,16 +8,14 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { ReactiveFormsModule } from "@angular/forms";
-import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BarraSuperiorComponent } from './barra-superior/barra-superior.component';
-import { ContenidoComponent } from './contenido/contenido.component';
 import * as firebase from 'firebase';
 import { PiePaginaComponent } from './pie-pagina/pie-pagina.component';
-import { ContenidoPruebaComponent } from './contenido-prueba/contenido-prueba.component';
 import { InicioComponent } from './inicio/inicio.component';
 
 
@@ -28,8 +26,17 @@ import { LoginComponent } from './login/login.component';
 
 
 import { ConexionService } from './services/conexion.service';
-import { LoginService } from './services/login.service';
 import { NoticiaComponent } from './noticia/noticia.component';
+import { FixtureComponent } from './fixture/fixture.component';
+import { AdministradorComponent } from './administrador/administrador.component';
+import { EquiposComponent } from './equipos/equipos.component';
+import { TablaPosicionComponent } from './tabla-posicion/tabla-posicion.component';
+import { CampeonatosComponent } from './campeonatos/campeonatos.component';
+
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { MetaCampeonatoComponent } from './meta-campeonato/meta-campeonato.component';
+import { ApiService } from './api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 firebase.initializeApp(environment.firebase);
 
@@ -39,15 +46,19 @@ firebase.initializeApp(environment.firebase);
   declarations: [
     AppComponent,
     BarraSuperiorComponent,
-    ContenidoComponent,
     PiePaginaComponent,
-    ContenidoPruebaComponent,
     InicioComponent,
     ListaCampeonatosComponent,
     AgregaCampeonatosComponent,
     NoticiasComponent,
     LoginComponent,
-    NoticiaComponent
+    NoticiaComponent,
+    FixtureComponent,
+    AdministradorComponent,
+    EquiposComponent,
+    TablaPosicionComponent,
+    CampeonatosComponent,
+    MetaCampeonatoComponent
   ],
   imports: [
     BrowserModule,
@@ -59,9 +70,10 @@ firebase.initializeApp(environment.firebase);
     AppRoutingModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    BsDropdownModule.forRoot(),
+    HttpClientModule
   ],
-  providers: [ConexionService, LoginService],
+  providers: [ConexionService, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

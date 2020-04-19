@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConexionService } from '../services/conexion.service';
-import { LoginService } from '../services/login.service';
 import { Noticia } from './../noticia';
-import { Campeonato } from './../campeonato';
 
 @Component({
   selector: 'app-noticias',
@@ -10,21 +8,14 @@ import { Campeonato } from './../campeonato';
   styleUrls: ['./noticias.component.css']
 })
 export class NoticiasComponent implements OnInit {
-
+  private idCampeonato="";
   noticias: Noticia[];
 
-  //constructor(private conexion: ConexionService, private campeonato: Campeonato) {
-constructor(private conexion: ConexionService, private sesion: LoginService) {
-    //console.log('--------------');
-    //console.log('datos de sesion: ', sesion.usuarioLogueado);
-
-    this.conexion.listaNoticias(sesion.usuarioLogueado.campeonato).subscribe(item=>{
+constructor(private conexion: ConexionService) {
+  console.log('listará noticias del campeonato: ', sessionStorage.getItem('idCampeonato'));
+    this.conexion.listaNoticias(sessionStorage.getItem('idCampeonato')).subscribe(item=>{
       this.noticias= item;
-      //console.log('noticias que trae', this.noticias);
     })
-    //this.conexion.listaNoticias(campeonato);
-
-    //console.log('--------------');
 
   }
 
@@ -33,7 +24,7 @@ constructor(private conexion: ConexionService, private sesion: LoginService) {
 
   eliminarNoticia(noticia) {
     
-    this.conexion.eliminarNoticia(this.sesion.usuarioLogueado.campeonato, noticia);
+    this.conexion.eliminarNoticia(sessionStorage.getItem('idCampeonato'), noticia);
   }
 
 }

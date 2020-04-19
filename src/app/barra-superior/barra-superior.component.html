@@ -1,9 +1,10 @@
 <div class="bg-dark  text-white py-5 text-center">
   <h1>Ligueros</h1>
-  <div class="container">
-    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal"
-      data-target="#campeonatoModal">{{campeonatoSesion.nombre}}</button>
-  </div>
+  <select  (change)="changeCampeonatoSesion($event)">
+    <option value="{{campeonatoSesion.IDCAMPEONATO}}">{{campeonatoSesion.NOMBRECAMPEONATO}}</option>
+    <option *ngFor="let campeonato of campeonatos" value="{{campeonato.IDCAMPEONATO}}">{{campeonato.NOMBRECAMPEONATO}}</option>
+    <option value="nuevo">Crear Campeonato</option>
+  </select>
 </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -16,10 +17,19 @@
         <a class="nav-link" [routerLink]="['/noticias']">Noticias</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/contenido']">Contenido 1</a>
+        <a class="nav-link" [routerLink]="['/meta']">Datos Campeonato</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="['/contenido-prueba']">Contenido 2</a>
+        <a class="nav-link" [routerLink]="['/administrador']">Administradores</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/equipos']">Equipos</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/tabla']">Tabla de Posiciones</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/fixture']">Fixture</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -28,35 +38,3 @@
     </form>
   </div>
 </nav>
-
-<!-- Modal -->
-<div class="modal fade" id="campeonatoModal" tabindex="-1" role="dialog" aria-labelledby="campeonatoModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Campeonatos</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="container mt-5">
-          <div class="row">
-            <div class="col">
-              <app-lista-campeonatos (actualizarPadre)="actualizarCerrar()"></app-lista-campeonatos>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <app-agrega-campeonatos></app-agrega-campeonatos>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>

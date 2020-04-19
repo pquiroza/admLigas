@@ -17,6 +17,12 @@ export const environment = {
 
 };
 
+export const environment2 = {
+  production: false,
+  apiURL: 'http://190.101.192.149:5000/ligueros/api/'
+
+};
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

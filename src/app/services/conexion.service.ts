@@ -21,14 +21,7 @@ export class ConexionService {
 
     //constructor
   constructor(private afs: AngularFirestore) {
-    this.campeonatosCollection = afs.collection<Campeonato>('Campeonatos');
-    this.campeonatos = this.campeonatosCollection.snapshotChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as Campeonato;
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      }))
-    );
+    
   }
 
   //métodos
@@ -72,6 +65,14 @@ export class ConexionService {
 
 
   listaCAmpeonatos() {
+    this.campeonatosCollection = this.afs.collection<Campeonato>('Campeonatos');
+    this.campeonatos = this.campeonatosCollection.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as Campeonato;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
     return this.campeonatos;
   }
 

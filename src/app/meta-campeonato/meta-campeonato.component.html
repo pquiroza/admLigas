@@ -1,0 +1,34 @@
+<div class="mt-5">
+    <form [formGroup]="formularioCampeonato" (ngSubmit)="agregarActualizaCampeonato()">
+        <div class="form-group">
+          <label for="categoriaInput">Categoria</label>
+          <input [class.is-invalid]="formularioCampeonato.get('categoriaC').touched && formularioCampeonato.get('categoriaC').invalid" formControlName="categoriaC" type="text" class="form-control" id="categoriaInput" value="{{campeonatoSesion.CATEGORIA}}">
+        </div>
+        <div class="form-group">
+          <label for="idInput">ID</label>
+          <input [class.is-invalid]="formularioCampeonato.get('idC').touched && formularioCampeonato.get('idC').invalid" formControlName="idC" type="text" class="form-control" id="idInput" value="{{campeonatoSesion.IDCAMPEONATO}}">
+        </div>
+        <div class="form-group">
+          <label for="nombreInput">Nombre</label>
+          <input [class.is-invalid]="formularioCampeonato.get('nombreC').touched && formularioCampeonato.get('nombreC').invalid" formControlName="nombreC" type="text" class="form-control" id="nombreInput" value="{{campeonatoSesion.NOMBRECAMPEONATO}}">
+        </div>
+        <div class="form-group">
+          <label for="sexoInput">Sexo</label>
+          <input [class.is-invalid]="formularioCampeonato.get('sexoC').touched && formularioCampeonato.get('sexoC').invalid" formControlName="sexoC" type="text" class="form-control" id="sexoInput" value="{{campeonatoSesion.SEXO}}" >
+        </div>
+        <div class="form-group">
+          <label for="fechaInput">Fecha</label>
+          <input [class.is-invalid]="formularioCampeonato.get('fechaC').touched && formularioCampeonato.get('fechaC').invalid" formControlName="fechaC" type="text" class="form-control" id="fechaInput" value="{{campeonatoSesion.TIMESTAMP}}">
+        </div>
+        <div class="form-group">
+          <label for="tipoInput">Tipo</label>
+          <input [class.is-invalid]="formularioCampeonato.get('tipoC').touched && formularioCampeonato.get('tipoC').invalid" formControlName="tipoC" type="text" class="form-control" id="tipoInput" value="{{campeonatoSesion.TIPO}}">
+        </div>
+        <div class="form-group">
+          <label for="ubicacionInput">Ubicación</label>
+          <input [class.is-invalid]="formularioCampeonato.get('ubicacionC').touched && formularioCampeonato.get('ubicacionC').invalid" formControlName="ubicacionC" type="text" class="form-control" id="ubicacionInput" value="{{campeonatoSesion.UBICACION}}">
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="button" (click)="eliminaCampeonato()" class="btn btn-danger">Eliminar</button>
+    </form>
+    </div>

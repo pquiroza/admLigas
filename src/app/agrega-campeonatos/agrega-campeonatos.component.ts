@@ -14,7 +14,10 @@ export class AgregaCampeonatosComponent implements OnInit {
     direccion: '',
     fechaInicio: ''
 }
-  constructor(private conexion: ConexionService) { }
+  constructor(private conexion: ConexionService) { 
+
+    console.log("CREA EL AGREGA CAMPEONATOS");
+  }
 
   ngOnInit() {
   }
