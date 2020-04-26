@@ -48,7 +48,7 @@ export class MetaCampeonatoComponent implements OnInit {
   
 
   getCampeonato(){
-    this.service.getCampeonatos().subscribe((campeonatos: any) => {
+    this.service.obtenerCampeonatos().subscribe((campeonatos: any) => {
       this.campeonatos=campeonatos;
       console.log('esto TRAE ', campeonatos);
       this.cargarCampeonatoSesion();
@@ -73,17 +73,17 @@ export class MetaCampeonatoComponent implements OnInit {
     console.log('FORMULARIO ',this.formularioCampeonato.status);
     if (this.campeonatoSesion.idCampeonato==0)
     {
-      this.service.addCampeonato(this.campeonatoSesion);
+      this.service.agregarCampeonato(this.campeonatoSesion);
     }
     else
     {
-      this.service.updateCampeonato(this.campeonatoSesion);
+      this.service.actualizarCampeonato(this.campeonatoSesion);
     }
   }
 
   eliminaCampeonato()
   {
-    this.service.deleteCampeonato(this.campeonatoSesion);
+    this.service.borrarCampeonato(this.campeonatoSesion.idCampeonato);
   }
 
 

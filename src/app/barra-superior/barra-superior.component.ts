@@ -35,16 +35,14 @@ export class BarraSuperiorComponent implements OnInit {
       this.cargarCampeonatoSesion();
     });
     */
-    
   }
 
   ngOnInit() {
-
     this.getCampeonatos();
   }
 
   getCampeonatos(){
-    this.service.getCampeonatos().subscribe((campeonatosServicio: any) => {
+    this.service.obtenerCampeonatos().subscribe((campeonatosServicio: any) => {
       console.log('esto TRAE ', campeonatosServicio);
       this.campeonatos= campeonatosServicio;
       
